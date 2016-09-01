@@ -4,10 +4,10 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Post */
+/* @var $model app\models\Estado */
 
 ?>
-<div class="post-create">
+<div class="estado-create">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

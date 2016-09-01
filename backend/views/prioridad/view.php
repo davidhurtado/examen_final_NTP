@@ -3,20 +3,16 @@
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Post */
+/* @var $model app\models\Prioridad */
 ?>
-<div class="post-view">
+<div class="prioridad-view">
  
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'post:ntext',
-            'usuario',
-            'fecha',
+            'descripcion:ntext',
         ],
     ]) ?>
 
 </div>
-<?php
-\bedezign\yii2\audit\web\JSLoggingAsset::register($this);

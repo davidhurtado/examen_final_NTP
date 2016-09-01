@@ -48,8 +48,16 @@ AppAsset::register($this);
                     'label' => 'ADMINISTRACION',
                     'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),
                     'items' => [
-                        ['label' => 'Auditoria', 'url' => ['/audit'],'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),],
                         ['label' => 'Usuarios', 'url' => ['/user/admin/index'],],
+                    ],
+                ];
+                $menuItems[] = [
+                    'label' => 'AUDITORIA',
+                    'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),
+                    'items' => [
+                        ['label' => 'Accesos', 'url' => ['/audit/entry'],],
+                        
+                        ['label' => 'Acciones', 'url' => ['/audit/trail'],],
                     ],
                 ];
 

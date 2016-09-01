@@ -3,9 +3,9 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Post */
+/* @var $model app\models\Prioridad */
 ?>
-<div class="post-update">
+<div class="prioridad-update">
 
     <?= $this->render('_form', [
         'model' => $model,

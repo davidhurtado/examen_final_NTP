@@ -3,18 +3,15 @@
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Logs */
+/* @var $model app\models\Estado */
 ?>
-<div class="logs-view">
+<div class="estado-view">
  
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'usuario',
-            'ip',
-            'acceso',
-            'fecha',
+            'descripcion:ntext',
         ],
     ]) ?>
 

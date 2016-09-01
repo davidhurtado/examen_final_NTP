@@ -16,16 +16,32 @@ return [
     // ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'post',
+        'attribute'=>'descripcion',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'usuario',
+        'attribute'=>'dependencia',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'fecha',
+        'attribute'=>'prioridad',
     ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'estado',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'fecha_inicio',
+    ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'duracion',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'comentario',
+    // ],
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,

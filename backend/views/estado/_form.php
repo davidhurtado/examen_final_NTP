@@ -3,19 +3,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Post */
+/* @var $model app\models\Estado */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="post-form">
+<div class="estado-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'post')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'usuario')->textInput() ?>
-
-    <?= $form->field($model, 'fecha')->textInput() ?>
+    <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
@@ -27,5 +23,3 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
     
 </div>
-<?php
-\bedezign\yii2\audit\web\JSLoggingAsset::register($this);

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Post;
+use app\models\Estado;
 
 /**
- * PostSearch represents the model behind the search form about `app\models\Post`.
+ * EstadoSearch represents the model behind the search form about `app\models\Estado`.
  */
-class PostSearch extends Post
+class EstadoSearch extends Estado
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class PostSearch extends Post
     public function rules()
     {
         return [
-            [['id', 'usuario'], 'integer'],
-            [['post', 'fecha'], 'safe'],
+            [['id'], 'integer'],
+            [['descripcion'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class PostSearch extends Post
      */
     public function search($params)
     {
-        $query = Post::find();
+        $query = Estado::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,11 +57,9 @@ class PostSearch extends Post
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'usuario' => $this->usuario,
-            'fecha' => $this->fecha,
         ]);
 
-        $query->andFilterWhere(['like', 'post', $this->post]);
+        $query->andFilterWhere(['like', 'descripcion', $this->descripcion]);
 
         return $dataProvider;
     }

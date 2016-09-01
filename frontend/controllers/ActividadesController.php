@@ -3,19 +3,18 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\Post;
-use app\models\PostSearch;
+use app\models\Actividades;
+use app\models\ActividadesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
-use yii\filters\AccessControl;
 
 /**
- * PostController implements the CRUD actions for Post model.
+ * ActividadesController implements the CRUD actions for Actividades model.
  */
-class PostController extends Controller
+class ActividadesController extends Controller
 {
     /**
      * @inheritdoc
@@ -23,22 +22,6 @@ class PostController extends Controller
     public function behaviors()
     {
         return [
-        'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -50,12 +33,12 @@ class PostController extends Controller
     }
 
     /**
-     * Lists all Post models.
+     * Lists all Actividades models.
      * @return mixed
      */
     public function actionIndex()
     {    
-        $searchModel = new PostSearch();
+        $searchModel = new ActividadesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -66,7 +49,7 @@ class PostController extends Controller
 
 
     /**
-     * Displays a single Post model.
+     * Displays a single Actividades model.
      * @param integer $id
      * @return mixed
      */
@@ -76,7 +59,7 @@ class PostController extends Controller
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "Post #".$id,
+                    'title'=> "Actividades #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -91,7 +74,7 @@ class PostController extends Controller
     }
 
     /**
-     * Creates a new Post model.
+     * Creates a new Actividades model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -99,7 +82,7 @@ class PostController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Post();  
+        $model = new Actividades();  
 
         if($request->isAjax){
             /*
@@ -108,7 +91,7 @@ class PostController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new Post",
+                    'title'=> "Create new Actividades",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -119,15 +102,15 @@ class PostController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new Post",
-                    'content'=>'<span class="text-success">Create Post success</span>',
+                    'title'=> "Create new Actividades",
+                    'content'=>'<span class="text-success">Create Actividades success</span>',
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
             }else{           
                 return [
-                    'title'=> "Create new Post",
+                    'title'=> "Create new Actividades",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -152,7 +135,7 @@ class PostController extends Controller
     }
 
     /**
-     * Updates an existing Post model.
+     * Updates an existing Actividades model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -170,7 +153,7 @@ class PostController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Update Post #".$id,
+                    'title'=> "Update Actividades #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -180,7 +163,7 @@ class PostController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Post #".$id,
+                    'title'=> "Actividades #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -189,7 +172,7 @@ class PostController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> "Update Post #".$id,
+                    'title'=> "Update Actividades #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -212,7 +195,7 @@ class PostController extends Controller
     }
 
     /**
-     * Delete an existing Post model.
+     * Delete an existing Actividades model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -240,7 +223,7 @@ class PostController extends Controller
     }
 
      /**
-     * Delete multiple existing Post model.
+     * Delete multiple existing Actividades model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -271,15 +254,15 @@ class PostController extends Controller
     }
 
     /**
-     * Finds the Post model based on its primary key value.
+     * Finds the Actividades model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Post the loaded model
+     * @return Actividades the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Post::findOne($id)) !== null) {
+        if (($model = Actividades::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
