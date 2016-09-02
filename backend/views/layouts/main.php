@@ -42,13 +42,17 @@ AppAsset::register($this);
                 $menuItems = [
                     ['label' => 'Inicio', 'url' => ['/site/index']],
                     ['label' => 'Cuenta', 'url' => ['/user/settings/account']],
-                    ['label' => 'FRONTEND', 'url' => '../../frontend/web','visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),],
+                    //['label' => 'FRONTEND', 'url' => '../../frontend/web','visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),],
                 ];
                 $menuItems[] = [
                     'label' => 'ADMINISTRACION',
                     'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),
                     'items' => [
                         ['label' => 'Usuarios', 'url' => ['/user/admin/index'],],
+                        ['label' => 'Organigrama', 'url' => ['/organigrama']],
+                        ['label' => 'Prioridades', 'url' => ['/prioridad']],
+                        ['label' => 'Estados', 'url' => ['/estado']],
+                        ['label' => 'Actividades', 'url' => ['/actividades']],
                     ],
                 ];
                 $menuItems[] = [

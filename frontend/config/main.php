@@ -46,5 +46,8 @@ return [
         ],
         */
     ],
+    'modules' => [
+         'rbac' => 'dektrium\rbac\RbacWebModule',
+    ],
     'params' => $params,
 ];

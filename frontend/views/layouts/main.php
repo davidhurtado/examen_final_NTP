@@ -45,7 +45,8 @@ AppAsset::register($this);
                 $menuItems = [
                     ['label' => 'Inicio', 'url' => ['/site/index']],
                     ['label' => 'Cuenta', 'url' => ['/user/settings/account']],
-                    ['label' => 'BACKEND', 'url' => '../../backend/web','visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),],
+                    ['label' => 'Actividades', 'url' => ['/actividades']],
+                    //['label' => 'BACKEND', 'url' => '../../backend/web','visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),],
                 ];
                 $menuItems[] = '<li>'
                         . Html::beginForm(['/site/logout'], 'post')

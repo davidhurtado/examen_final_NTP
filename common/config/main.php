@@ -21,7 +21,7 @@ return [
             'confirmWithin' => 21600,
             'cost' => 12,
             'enableRegistration' => true,
-            'admins' => ['superadmin', 'marc'],
+            'admins' => ['superadmin'],
         ],
         'audit' => [
             'class' => 'bedezign\yii2\audit\Audit',
