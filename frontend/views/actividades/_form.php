@@ -12,29 +12,31 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
     <div class="form-group field-actividades-dependencia col-md-4 col-xs-12 col-sm-4 required">
-<?= $form->field($model, 'dependencia')->dropDownList($model->getOrganigrama())->label('Organigrama') ?>
+        <?= $form->field($model, 'dependencia')->dropDownList($model->getOrganigrama())->label('Organigrama') ?>
     </div>
     <div class="form-group field-actividades-prioridad col-md-4 col-xs-12 col-sm-4 required">
-<?= $form->field($model, 'prioridad')->dropDownList($model->getPrioridad())->label('Prioridad') ?>
+        <?= $form->field($model, 'prioridad')->dropDownList($model->getPrioridad())->label('Prioridad') ?>
     </div>
     <div class="form-group field-actividades-estado col-md-4 col-xs-12 col-sm-4 required">
         <?= $form->field($model, 'estado')->dropDownList($model->getEstado())->label('Estado') ?>
-
-        <?= $form->field($model, 'fecha_inicio')->textInput(['type' => 'date']) ?>
-
-        <?= $form->field($model, 'duracion')->textInput() ?>
-
-<?= $form->field($model, 'comentario')->textarea(['rows' => 6]) ?>
-
-
-            <?php if (!Yii::$app->request->isAjax) { ?>
-            <div class="form-group">
-            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-            </div>
-        <?php } ?>
-
-<?php ActiveForm::end(); ?>
-
     </div>
+     <div class="form-group field-actividades-fecha_inicio col-md-4 col-xs-12 col-sm-4 required">
+       <?= $form->field($model, 'fecha_inicio')->textInput(['type' => 'date']) ?>
+    </div>
+    <div class="form-group field-actividades-duracion col-md-4 col-xs-12 col-sm-4 required">
+       <?= $form->field($model, 'duracion')->textInput() ?>
+    </div>
+    <div class="form-group field-actividades-comentario col-md-4 col-xs-12 col-sm-4 required">
+      <?= $form->field($model, 'comentario')->textarea(['rows' => 6]) ?>
+    </div>
+    <?php if (!Yii::$app->request->isAjax) { ?>
+        <div class="form-group">
+            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        </div>
+    <?php } ?>
+
+    <?php ActiveForm::end(); ?>
+
+</div>
