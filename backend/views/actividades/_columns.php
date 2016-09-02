@@ -5,6 +5,8 @@ use \yii\db\Query;
 use kartik\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\Actividades;
+use dektrium\user\models\User;
+
 return [
     [
         'class' => 'kartik\grid\CheckboxColumn',
@@ -20,7 +22,21 @@ return [
     // ],
     [
         'class' => '\kartik\grid\DataColumn',
-        'attribute' => 'usuario',
+        'attribute' => 'Usuario',
+        'contentOptions' => ['style' => 'width: 10px; text-align:center'],
+        'value' => function($data) {
+    $query = new Query();
+    $query->select('*')
+            ->from('user')->where(['id' => $data->usuario]);
+    $model = $query->createCommand()->queryOne();
+    return $model['username'];
+},
+        'filterType' => GridView::FILTER_SELECT2,
+        'filter' => ArrayHelper::map(User::find()->orderBy('id')->asArray()->all(), 'id', 'username'),
+        'filterWidgetOptions' => [
+            'pluginOptions' => ['allowClear' => true],
+        ],
+        'filterInputOptions' => ['placeholder' => 'Seleccione'],
     ],
     [
         'class' => '\kartik\grid\DataColumn',
@@ -80,14 +96,16 @@ return [
         ],
         'filterInputOptions' => ['placeholder' => 'Seleccione'],
     ],
-    // [
-    // 'class'=>'\kartik\grid\DataColumn',
-    // 'attribute'=>'fecha_inicio',
-    // ],
-    // [
-    // 'class'=>'\kartik\grid\DataColumn',
-    // 'attribute'=>'duracion',
-    // ],
+    [
+        'class' => '\kartik\grid\DataColumn',
+        'attribute' => 'fecha_inicio',
+        'contentOptions' => ['style' => 'width: 10px; text-align:center'],
+    ],
+    [
+        'class' => '\kartik\grid\DataColumn',
+        'contentOptions' => ['style' => 'width: 10px; text-align:center'],
+        'attribute' => 'duracion',
+    ],
     // [
     // 'class'=>'\kartik\grid\DataColumn',
     // 'attribute'=>'comentario',

@@ -71,4 +71,71 @@ class ActividadesSearch extends Actividades
 
         return $dataProvider;
     }
+     public function searchAnio($params)
+    {
+        $query = Actividades::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'usuario' => $this->usuario,
+            'dependencia' => $this->dependencia,
+            'prioridad' => $this->prioridad,
+            'estado' => $this->estado,
+            'duracion' => $this->duracion,
+        ]);
+         if (!empty($this->fecha_inicio)) {
+            $query->andFilterWhere(['between', 'fecha_inicio', $this->fecha_inicio . '-01-01', $this->fecha_inicio . '-12-31']);
+        }
+
+
+        $query->andFilterWhere(['like', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['like', 'comentario', $this->comentario]);
+
+        return $dataProvider;
+    }
+     public function searchMes($params)
+    {
+        $query = Actividades::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'usuario' => $this->usuario,
+            'dependencia' => $this->dependencia,
+            'prioridad' => $this->prioridad,
+            'estado' => $this->estado,
+            'duracion' => $this->duracion,
+        ]);
+         if (!empty($this->fecha_inicio)) {
+            $query->andFilterWhere(['between', 'fecha_inicio', $this->fecha_inicio .'-01', $this->fecha_inicio . '-31']);
+        }
+
+        $query->andFilterWhere(['like', 'descripcion', $this->descripcion])
+            ->andFilterWhere(['like', 'comentario', $this->comentario]);
+
+        return $dataProvider;
+    }
 }

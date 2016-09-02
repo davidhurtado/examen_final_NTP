@@ -56,6 +56,14 @@ AppAsset::register($this);
                     ],
                 ];
                 $menuItems[] = [
+                    'label' => 'REPORTES',
+                    'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),
+                    'items' => [
+                        ['label' => 'Semanales', 'url' => ['/actividades/semana'],],                        ['label' => 'Mensuales', 'url' => ['/actividades/mes'],],
+                        ['label' => 'Anuales', 'url' => ['/actividades/anio'],],
+                    ],
+                ];
+                $menuItems[] = [
                     'label' => 'AUDITORIA',
                     'visible' => Yii::$app->user->identity->isAdmin || Yii::$app->user->can('admin'),
                     'items' => [
